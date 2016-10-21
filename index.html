@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Einführung in Django</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+     document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+      <script src="reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body onload="onload()">
+
+    <div class="reveal">
+
+      <div class="slides">
+
+        
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+## Einführung in das Web-Framework
+
+<img src="images/logo.svg" alt="django" style="height: 10rem; background: none; border: none; box-shadow: none;">
+
+#### *The web framework for perfectionists with deadlines*
+
+### Was ist das und wofür braucht man das?
+
+<p><small>made by Arne Schauf <a href="https://www.twitter.com/asmaps">@asmaps</a></small></p>
+<p style="text-align:right"><small>21.10.2016 - Linux Presentation Day - HfT Stuttgart</small></p>
+
+--
+
+<img src="images/lpd.asw.io.jpg" alt="QR Code" style="height: 40vh; background: none; border: none; box-shadow: none;">
+
+# ldp16.asw.io
+
+--
+
+## Übersicht
+
+1. Was ist Django?
+2. Features
+3. Request Lifecycle
+4. Nützliche Apps
+5. Django in the wild
+6. Demo Time
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+## Was ist Django?
+
+* High-level Webdevelopment Framework <!-- .element: class="fragment" -->
+* Python 2.7 & 3.4+ (ab Version 2.0: 3.5+) <!-- .element: class="fragment" -->
+* DRY Prinzip (Dont-Repeat-Yourself) <!-- .element: class="fragment" -->
+* Entwicklungsstart 2003 bei einer Zeitung <!-- .element: class="fragment" -->
+* Open-Source unter BSD Lizenz seit 2005 <!-- .element: class="fragment" -->
+
+--
+
+## Wer entwickelt Django?
+
+* Django Software Foundation <!-- .element: class="fragment" -->
+* Core Team (aktuell 38 Mitglieder) <!-- .element: class="fragment" -->
+* Community (GitHub) <!-- .element: class="fragment" -->
+* neue Version nach ca. 8 Monaten <!-- .element: class="fragment" -->
+* aktuell Version 1.10.2 <!-- .element: class="fragment" -->
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+## Features
+
+* Models/ORM <!-- .element: class="fragment" -->
+* Template Engine <!-- .element: class="fragment" -->
+* Forms API <!-- .element: class="fragment" -->
+* Admin Interface <!-- .element: class="fragment" -->
+* DB Management (Migrations) <!-- .element: class="fragment" -->
+
+--
+
+## Features (2)
+
+* Reusable Apps
+* Internationalisierung & Lokalisierung <!-- .element: class="fragment" -->
+* Caching Framework <!-- .element: class="fragment" -->
+* coming soon: Channels (WebSockets etc) <!-- .element: class="fragment" -->
+* uvm... <!-- .element: class="fragment" -->
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+<h2>Request Lifecycle</h2>
+
+<div id="requestchart" class="fragment"></div>
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+## Nützliche Apps
+
+* [Django Rest Framework](http://www.django-rest-framework.org/)
+* [Channels](https://channels.readthedocs.io/en/stable/)
+* [Django Extensions](https://django-extensions.readthedocs.io/en/latest/)
+* [Python Social Auth](http://psa.matiasaguirre.net/)
+* [Django Rules](https://github.com/dfunckt/django-rules)
+* [django-forms-bootstrap](https://github.com/pinax/django-forms-bootstrap)
+* ...
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+## Django in der Wildnis
+
+* Disqus
+* Open Knowledge Foundation
+* Mozilla
+* Pinterest
+* Instagram
+* OpenStack
+* Ubuntu Developer Portal
+* L’Oréal Men Expert
+* Letsmeet.click
+* ...
+
+</script>
+</section>
+
+<section data-markdown data-separator="^\n---\n$" data-separator-vertical="^\n--\n$" data-notes="^Note:">
+<script type="text/template">
+# Demo Time
+
+</script>
+</section>
+
+
+
+      </div>
+
+    </div>
+
+    <script src="reveal.js/lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    <script src="js/raphael-min.js"></script>
+    <script src="js/raphael-chart.js"></script>
+
+    <script>
+
+     // Full list of configuration options available here:
+     // https://github.com/hakimel/reveal.js#configuration
+     Reveal.initialize({
+       controls: true,
+       progress: true,
+       history: true,
+       center: true,
+
+       theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+       transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+       
+
+       // Optional libraries used to extend on reveal.js
+       dependencies: [
+         { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+         { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+         { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+         
+         { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+         
+         
+       ]
+     });
+
+    </script>
+    <script>
+     // global colors for all charts
+     var colors = {
+       blue: Raphael.rgb(98, 147, 254),
+       green: Raphael.rgb(85, 142, 40),
+       orange: Raphael.rgb(253, 154, 0),
+       silver: Raphael.rgb(204, 204, 204)
+     };
+     // request-response chart
+     function onload() {
+       console.log('init raphael');
+       var paper = Raphael('requestchart', 830, 600);
+       var width = 220;
+       var textSize = 24;
+       paper.clear();
+       chart.paper = paper;
+       ws = chart.rect('Webserver', 400, 50, colors.blue, width);
+       url = chart.rect('URLConf', 120, 150, colors.green, width);
+       mw = chart.rect('Middleware', 700, 50, colors.orange, width);
+       view = chart.rect('View', 400, 250, colors.green, width);
+       orm = chart.rect('Model (ORM)', 400, 400, colors.green, width);
+       tpl = chart.rect('Template', 700, 350, colors.green, width);
+       tf = chart.rect('Tags & Filter', 700, 500, colors.green, width);
+       db = chart.rect('Datenbank', 400, 550, colors.blue, width);
+       chart.pointTo(ws, 'left', url, 'top', colors.silver).label(
+         'process_request', colors.orange, textSize);
+       chart.pointTo(url, 'bottom', view, 'left', colors.silver).label(
+         'process_view', colors.orange, textSize, 'left', 40);
+       chart.pointTo(view, 'bottom', orm, 'top', colors.silver, 30);
+       chart.pointTo(orm, 'bottom', db, 'top', colors.silver, 30);
+       chart.pointTo(db, 'top', orm, 'bottom', colors.silver, -30);
+       chart.pointTo(orm, 'top', view, 'bottom', colors.silver, -30);
+       chart.connect(view, 'right', tpl, 'top', colors.silver);
+       chart.pointTo(tpl, 'bottom', tf, 'top', colors.silver, 30);
+       chart.pointTo(tf, 'top', tpl, 'bottom', colors.silver, -30);
+       chart.pointTo(view, 'top', ws, 'bottom', colors.silver).label(
+         'process_template_response\nprocess_response', colors.orange, textSize, 'right', 180);
+     };
+    </script>
+
+  </body>
+</html>
