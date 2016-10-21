@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>{{ site.title }}</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="{{ site.reveal_path }}css/reveal.css">
+    <link rel="stylesheet" href="{{ site.reveal_theme_path }}{{ site.reveal_theme }}" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="{{ site.reveal_path }}lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+     document.write( '<link rel="stylesheet" href="{{ site.reveal_path }}css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+      <script src="{{ site.reveal_path }}lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body onload="onload()">
+
+    <div class="reveal">
+
+      <div class="slides">
+
+        {{ content }}
+
+      </div>
+
+    </div>
+
+    <script src="{{ site.reveal_path }}lib/js/head.min.js"></script>
+    <script src="{{ site.reveal_path }}js/reveal.js"></script>
+    <script src="js/raphael-min.js"></script>
+    <script src="js/raphael-chart.js"></script>
+
+    <script>
+
+     // Full list of configuration options available here:
+     // https://github.com/hakimel/reveal.js#configuration
+     Reveal.initialize({
+       controls: true,
+       progress: true,
+       history: true,
+       center: true,
+
+       theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+       transition: '{{ site.reveal_transition }}', // default/cube/page/concave/zoom/linear/fade/none
+
+       {% if site.reveal_options %}
+
+       {{ site.reveal_options | append:',' }}
+
+       {% endif %}
+
+       // Optional libraries used to extend on reveal.js
+       dependencies: [
+         { src: '{{ site.reveal_path }}lib/js/classList.js', condition: function() { return !document.body.classList; } },
+         { src: '{{ site.reveal_path }}plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: '{{ site.reveal_path }}plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+         { src: '{{ site.reveal_path }}plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+         { src: '{{ site.reveal_path }}plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+         {% if site.reveal_notes_server %}
+         { src: '{{ site.reveal_path }}socket.io/socket.io.js', async: true },
+         { src: '{{ site.reveal_path }}plugin/notes-server/client.js', async: true }
+         {% else %}
+         { src: '{{ site.reveal_path }}plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+         {% endif %}
+         {% if site.reveal_dependencies %}
+         , {{ site.reveal_dependencies }}
+         {% endif %}
+       ]
+     });
+
+    </script>
+    <script>
+     // global colors for all charts
+     var colors = {
+       blue: Raphael.rgb(98, 147, 254),
+       green: Raphael.rgb(85, 142, 40),
+       orange: Raphael.rgb(253, 154, 0),
+       silver: Raphael.rgb(204, 204, 204)
+     };
+     // request-response chart
+     function onload() {
+       console.log('init raphael');
+       var paper = Raphael('requestchart', 830, 600);
+       var width = 220;
+       var textSize = 24;
+       paper.clear();
+       chart.paper = paper;
+       ws = chart.rect('Webserver', 400, 50, colors.blue, width);
+       url = chart.rect('URLConf', 120, 150, colors.green, width);
+       mw = chart.rect('Middleware', 700, 50, colors.orange, width);
+       view = chart.rect('View', 400, 250, colors.green, width);
+       orm = chart.rect('Model (ORM)', 400, 400, colors.green, width);
+       tpl = chart.rect('Template', 700, 350, colors.green, width);
+       tf = chart.rect('Tags & Filter', 700, 500, colors.green, width);
+       db = chart.rect('Datenbank', 400, 550, colors.blue, width);
+       chart.pointTo(ws, 'left', url, 'top', colors.silver).label(
+         'process_request', colors.orange, textSize);
+       chart.pointTo(url, 'bottom', view, 'left', colors.silver).label(
+         'process_view', colors.orange, textSize, 'left', 40);
+       chart.pointTo(view, 'bottom', orm, 'top', colors.silver, 30);
+       chart.pointTo(orm, 'bottom', db, 'top', colors.silver, 30);
+       chart.pointTo(db, 'top', orm, 'bottom', colors.silver, -30);
+       chart.pointTo(orm, 'top', view, 'bottom', colors.silver, -30);
+       chart.connect(view, 'right', tpl, 'top', colors.silver);
+       chart.pointTo(tpl, 'bottom', tf, 'top', colors.silver, 30);
+       chart.pointTo(tf, 'top', tpl, 'bottom', colors.silver, -30);
+       chart.pointTo(view, 'top', ws, 'bottom', colors.silver).label(
+         'process_template_response\nprocess_response', colors.orange, textSize, 'right', 180);
+     };
+    </script>
+
+  </body>
+</html>
